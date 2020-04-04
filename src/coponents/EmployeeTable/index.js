@@ -34,7 +34,7 @@ import Search from "../Search";
 class EmployeeTable extends React.Component {
     state = {
         sortOrder: "",
-        results: [],
+        employees: [],
         search: ""
     }
 
@@ -83,7 +83,7 @@ class EmployeeTable extends React.Component {
             <>
                 <Search handleInputChange={this.handleInputChange}
                     search={this.state.search} />
-                <table>
+                <table className="text-center">
                     <thead>
                         <tr>
                             <th>Image</th>
@@ -96,18 +96,19 @@ class EmployeeTable extends React.Component {
 
                     <tbody>
                         {this.state.employees.map(person => (
-                            <tr key={person.id}>
-                                <td ><img src={person.picture.thumbnail} alt="thumbnail" /></td>
-                                <td key={person.id}>{person.name}</td>
-                                <td key={person.id}>{person.phone}</td>
-                                <td key={person.id}>{person.email}</td>
-                                <td key={person.id}>{person.dob}</td>
-                            </tr>
+                            person.name.first.toLowerCase().includes(this.state.search) ?
+                                <tr>
+                                    <td ><img src={person.picture.thumbnail} alt="thumbnail" /></td>
+                                    <td key={person.id}>{person.name}</td>
+                                    <td key={person.id}>{person.phone}</td>
+                                    <td key={person.id}>{person.email}</td>
+                                    <td key={person.id}>{person.dob}</td>
+                                </tr> : null
                         ))}
                     </tbody>
                 </table>
             </>
-        );
+        )
     }
 }
 

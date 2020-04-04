@@ -1,5 +1,14 @@
 table {
     width: 100%;
+    text-align: center;
+    border: solid;
+    border-width: 1px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+tbody {
+    background-color:white;
 }
 
 th, td {
